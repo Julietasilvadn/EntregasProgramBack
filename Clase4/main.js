@@ -18,12 +18,12 @@ class Contenedor {
     //Agregar archivos
     async save(producto){
         try {
-            if(!fs.existsSync(this.filename)){
-                const id = 1
+            if(!fs.existsSync(this.archivo)){
+                
                 const nuevoProducto = {title:producto.title,
                     price:producto.price,
                     thumbnail:producto.thumbnail,
-                    id:id}
+                    id:1}
                 
                 await fs.promises.writeFile(this.archivo,JSON.stringify([nuevoProducto], null, 2))
                 return id
