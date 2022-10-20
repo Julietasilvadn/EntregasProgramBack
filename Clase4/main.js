@@ -71,6 +71,26 @@ class Contenedor {
         }
 
     }
+
+    async getById(id) {
+        try {
+            if (fs.existsSync(this.archivo)) {
+                const data = this.getAll();
+                const dataId = data.filter(producto => producto.id === id);
+                if (dataId.length === 0) {
+                    throw new Error(
+                        "No se encontro un producto con el id solicitado"
+                    );
+                } else {
+                    console.log(`Producto con id ${id} encontrado:\n`, dataId);
+                    return dataId;
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 }
 
 const contenedor = new Contenedor('productos.txt');
@@ -79,11 +99,11 @@ async function mostrar(){
      console.log(await contenedor.getAll())
      console.log(await contenedor.save({title: 'Rectangulo',price: 153.65,thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'}))
      console.log(await contenedor.getAll())
-     //ACA HAY UN ERROR, ME SOBREESCRIBE Y NO ME AGREGA
      console.log(await contenedor.save({title: 'Escuadra', price: 123.45, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'}))
      console.log(await contenedor.getAll())
-     console.log(await contenedor.deleteAll())
-     console.log(await contenedor.getAll())
+     console.log(await contenedor.getById(2))
+    //  console.log(await contenedor.deleteAll())
+    //  console.log(await contenedor.getAll())
 }
 
 
