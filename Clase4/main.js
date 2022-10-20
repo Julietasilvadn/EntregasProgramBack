@@ -90,20 +90,40 @@ class Contenedor {
         }
     }
 
+    async deleteById(id){
+        try {
+            const encontrarId = await this.getById(id)
+            if(encontrarId != ''){
+                producto = await encontrarId.filter(producto => producto.id !== id)
+                await fs.writeFileSync('productos.txt',JSON.stringify(producto),'utf-8')
+            } else {
+                throw new Error (
+                    `No se encontro el producto con el id ${id}`
+                )
+            }
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 }
 
 const contenedor = new Contenedor('productos.txt');
 
 async function mostrar(){
      console.log(await contenedor.getAll())
-     console.log(await contenedor.save({title: 'Rectangulo',price: 153.65,thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'}))
-     console.log(await contenedor.getAll())
-     console.log(await contenedor.save({title: 'Escuadra', price: 123.45, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'}))
-     console.log(await contenedor.getAll())
+    //  console.log(await contenedor.save({title: 'Rectangulo',price: 153.65,thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'}))
+    //  console.log(await contenedor.getAll())
+    //  console.log(await contenedor.save({title: 'Escuadra', price: 123.45, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'}))
+    //  console.log(await contenedor.getAll())
     // console.log(await contenedor.getById(2))
     //  console.log(await contenedor.deleteAll())
     //  console.log(await contenedor.getAll())
     console.log(await contenedor.getById(2))
+    console.log(await contenedor.deleteById(3))
+    console.log(await contenedor.getAll())
 }
 
 
