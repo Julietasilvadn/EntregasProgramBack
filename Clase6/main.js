@@ -2,6 +2,8 @@ const fs = require("fs");
 const express = require ('express');
 const app = express();
 const PORT = 8080;
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 
 class Contenedor {
@@ -18,10 +20,8 @@ class Contenedor {
         }
     }
 
+
 }
-
-const contenedor = new Contenedor('productos.txt');
-
 
 app.get('/',(peticion, respuesta) =>{
     respuesta.send('Bienvenido a la página principal');
@@ -29,7 +29,7 @@ app.get('/',(peticion, respuesta) =>{
 
 app.get('/productos',async (peticion, respuesta) =>{
         const listaProductos = await contenedor.getAll();
-        respuesta.send(`Los productos son: ${listaProductos}`);
+        await respuesta.send(`Los productos son: ${listaProductos}`);
     
 });
 
@@ -37,10 +37,14 @@ app.get('/productos',async (peticion, respuesta) =>{
 //     
 //     respuesta.send();
 // });
+
+const contenedor = new Contenedor('productos.txt');
+
+console.log(contenedor.getAll());
+
 const server = app.listen(PORT, () =>{
     console.log(`Servidor HTTP escuchando en el puerto ${server.address().port}`);
 });
 
 server.on("error", error => console.log(`Error en servidor ${error}`));
-
 
