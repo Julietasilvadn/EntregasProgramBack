@@ -16,5 +16,17 @@
     "price": 345.67,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
     "id": 4
+  },
+  {
+    "title": "Calculadora",
+    "price": 234.56,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "id": 5
+  },
+  {
+    "title": "PruebitaPastafrola",
+    "price": 222,
+    "thumbnail": "https://i.blogs.es/7e0e99/pasta-frola/1366_2000.jpg",
+    "id": 6
   }
 ]

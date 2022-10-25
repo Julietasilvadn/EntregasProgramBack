@@ -112,15 +112,15 @@ const producto1 = {title: 'Rectangulo',price: 153.65,thumbnail: 'https://cdn3.ic
 const producto2 = {title: 'Escuadra', price: 123.45, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png'};
 const producto3 = {title: 'Calculadora', price: 234.56, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png'};
 const producto4 = {title: 'Globo Terráqueo', price: 345.67, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png'};
-const producto5 = {title: 'PruebitaPastafrola', price: 222, thumbnail: 'file:///C:/Users/Jula/Downloads/pastafrola.jpg'};
+const producto5 = {title: 'PruebitaPastafrola', price: 222, thumbnail: 'https://i.blogs.es/7e0e99/pasta-frola/1366_2000.jpg'};
 
 async function mostrar(){
      console.log(await contenedor.getAll())
     //  console.log(await contenedor.save(producto1))
     //  console.log(await contenedor.save(producto2))
-    //  console.log(await contenedor.save(producto3))
+    // console.log(await contenedor.save(producto3))
     //  console.log(await contenedor.save(producto4))
-    //  console.log(await contenedor.save(producto5))
+    //   console.log(await contenedor.save(producto5))
     //  console.log(await contenedor.deleteAll())
     //  console.log(await contenedor.getAll())
     // console.log(await contenedor.getById(2))

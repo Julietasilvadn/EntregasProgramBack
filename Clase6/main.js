@@ -24,9 +24,7 @@ class Contenedor {
                 const data = await this.getAll();
                 const dataId = await data.filter(producto => producto.id === id);
                 if (dataId.length === 0) {
-                    throw new Error(
-                        "No se encontro un producto con el id solicitado"
-                    );
+                    return
                 } else {
                     console.log( `Producto con id ${id} encontrado:`)
                     return dataId
@@ -46,7 +44,7 @@ app.get('/',(peticion, respuesta) =>{
 
 app.get('/productos',async (peticion, respuesta) =>{
     const listaProductos = await contenedor.getAll();
-    await respuesta.send(listaProductos);
+    respuesta.send(listaProductos);
 
 });
 
@@ -55,7 +53,9 @@ app.get('/productoRandom', async (peticion, respuesta) =>{
         const listaProductos = await contenedor.getAll();
         const productoRandom = Math.floor(Math.random() * listaProductos.length);
         const producto = await contenedor.getById(productoRandom);
-        respuesta.send(producto);
+        if(producto == null){
+            respuesta.send("No existe el producto ID 0 ")
+        } else {respuesta.send(producto)}
 
 });
 
