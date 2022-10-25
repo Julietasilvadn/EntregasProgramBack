@@ -18,6 +18,25 @@ class Contenedor {
         }
     }
 
+    async getById(id) {
+        try {
+            if (await fs.existsSync(this.archivo)) {
+                const data = await this.getAll();
+                const dataId = await data.filter(producto => producto.id === id);
+                if (dataId.length === 0) {
+                    throw new Error(
+                        "No se encontro un producto con el id solicitado"
+                    );
+                } else {
+                    console.log( `Producto con id ${id} encontrado:`)
+                    return dataId
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
 }
 
@@ -26,19 +45,27 @@ app.get('/',(peticion, respuesta) =>{
 });
 
 app.get('/productos',async (peticion, respuesta) =>{
-        const listaProductos = await contenedor.getAll();
-        await respuesta.send(`Los productos son: ${listaProductos}`);
-    
+    const listaProductos = await contenedor.getAll();
+    await respuesta.send(listaProductos);
+
 });
 
-// app.get('/productoRandom', (peticion, respuesta) =>{
-//     
-//     respuesta.send();
-// });
+app.get('/productoRandom', async (peticion, respuesta) =>{
+    
+        const listaProductos = await contenedor.getAll();
+        const productoRandom = Math.floor(Math.random() * listaProductos.length);
+        const producto = await contenedor.getById(productoRandom);
+        respuesta.send(producto);
+
+});
 
 const contenedor = new Contenedor('productos.txt');
 
-console.log(contenedor.getAll());
+// Prueba para ver si esta OK el getAll
+// async function mostrar(){
+// console.log(await contenedor.getAll());
+// }
+// mostrar()
 
 const server = app.listen(PORT, () =>{
     console.log(`Servidor HTTP escuchando en el puerto ${server.address().port}`);
