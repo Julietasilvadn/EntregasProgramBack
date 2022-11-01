@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h1>Formularios</h1>
+  </header>
+  <div>
+    <h2>Productos</h2>
+    <form action="/api/productos" method="post">
+      <!-- Cambiar propiedades -->
+      <label for="title">Producto:</label><br>
+      <input type="text" id="title" name="title"><br>
+      <label for="price">Precio:</label><br>
+      <input type="text" id="price" name="price"><br>
+      <label for="image">Imagen:</label><br>
+      <input type="text" id="image" name="image">
+      <input type="submit" value="Enviar">
+    </form>
+  </div>
+</body>
+</html>
