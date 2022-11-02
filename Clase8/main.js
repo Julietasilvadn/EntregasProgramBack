@@ -1,24 +1,20 @@
 const Contenedor = require("./contenedor.js");
+const Routers = require("./routers.js");
+const Producto = require("./productos.js");
 
-const productos = new Contenedor([]);
+const express = require('express');
+const { Router } = express;
+const aplicacion = express();
+const port = 8080;
 
-//LISTA PRODUCTOS
-producto1 = {
-    title: 'Pan',
-    price: '100',
-    image: 'imagen1'
-};
-producto2 = {
-    title: 'Budin',
-    price: '200',
-    image: 'imagen2'
-};
-producto3 = {
-    title: 'Torta',
-    price: '300',
-    image: 'imagen3'
-};
+aplicacion.use('/static', express.static(__dirname + '/public'));
+aplicacion.use(express.json());
+aplicacion.use(express.urlencoded({ extended: true }));
 
-productos.save(producto1);
-productos.save(producto2);
-productos.save(producto3);
+
+//Servidor INICIO
+const servidor = aplicacion.listen(port, () => {
+  console.log(`Servidor escuchando: ${servidor.address().port}`);
+});
+servidor.on('error', error => console.log(`Error: ${error}`));
+//Servidor FIN
