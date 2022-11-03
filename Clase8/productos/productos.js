@@ -1,14 +1,34 @@
+const Contenedor = require("../contenedor/contenedor.js");
+const productos = new Contenedor([]);
 const express = require('express');
 const { Router } = express;
-const aplicacion = express();
 const rutaProductos = Router();
-const port = 8080;
-const Routers = Router();
 
-aplicacion.use('/static', express.static(__dirname + '/public'));
-aplicacion.use(express.json());
-aplicacion.use(express.urlencoded({ extended: true }));
+//LISTA PRODUCTOS
+producto1 = {
+    title: 'Pan',
+    price: '100',
+    image: 'imagen1'
+};
+producto2 = {
+    title: 'Budin',
+    price: '200',
+    image: 'imagen2'
+};
+producto3 = {
+    title: 'Torta',
+    price: '300',
+    image: 'imagen3'
+};
 
+productos.save(producto1);
+productos.save(producto2);
+productos.save(producto3);
+
+const obtenerTodo=(peticion, respuesta) => {
+    const listaProductos = productos.getAll();
+    respuesta.json(listaProductos);
+}
 
 //GET ALL******************************************
 rutaProductos.get('/', (peticion, respuesta) => {
@@ -61,7 +81,5 @@ rutaProductos.delete('/:id', (peticion, respuesta) => {
 });
 
 
-aplicacion.use('/api/productos', rutaProductos);
 
-
-module.exports = Routers
+module.exports = {obtenerTodo};

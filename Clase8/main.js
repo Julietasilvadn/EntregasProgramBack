@@ -1,15 +1,12 @@
-const Contenedor = require("./contenedor.js");
-const Routers = require("./routers.js");
-const Producto = require("./productos.js");
-
+const rutaProductos = require("./rutas/routers.js");
 const express = require('express');
-const { Router } = express;
 const aplicacion = express();
 const port = 8080;
 
 aplicacion.use('/static', express.static(__dirname + '/public'));
 aplicacion.use(express.json());
 aplicacion.use(express.urlencoded({ extended: true }));
+aplicacion.use('/api/productos', rutaProductos);
 
 
 //Servidor INICIO
