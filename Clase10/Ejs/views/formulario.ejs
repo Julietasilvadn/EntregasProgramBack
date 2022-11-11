@@ -1,0 +1,19 @@
+{% extends "static/base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+<body>
+  <a href="/productos">Ir a la lista -></a>
+  <h1>Ingrese producto: </h1>
+  <form action="/productos" method="post">
+    <label for="title">Titulo:</label>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="price">Precio:</label>
+    <input type="text" id="price" name="price"><br><br>
+    <label for="thumbnail">Foto URL:</label>
+    <input type="text" id="thumbnail" name="thumbnail"><br><br>
+    <input type="submit" value="Enviar">
+  </form>
+  <br>
+</body>
+{% endblock %}
