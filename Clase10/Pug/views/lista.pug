@@ -1,0 +1,16 @@
+body
+  a(href="/")= 'Ir a formulario'
+  if productos.length == 0 
+    h3= 'No hay productos agregados.'
+  else 
+    table
+      tr
+        th= 'Nombre del producto'
+        th= 'Precio'
+        th= 'Foto'
+      each producto in productos
+        tr
+          td= producto.title
+          td= producto.price
+          <td> 
+            img(src=producto.thumbnail alt="" width="70" height="50")
