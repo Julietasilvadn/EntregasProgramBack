@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="/socket.io/socket.io.js"></script>
   <script src="index.js"></script>
+  <script src="moment.js"></script>
   <title>Document</title>
 </head>
 <body>
   <div>
     <h1>Agregar producto: </h1>
     <form onsubmit="return addProduct(this)">
-      <label for="title">Titulo:</label>
+      <label for="title">Producto:</label>
       <input type="text" id="title" name="title" required><br><br>
       <label for="price">Precio:</label>
       <input type="number" id="price" name="price" required><br><br>

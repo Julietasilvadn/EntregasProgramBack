@@ -1,4 +1,6 @@
 const socket = io();
+const dateRaw = new Date();
+const date = `(${dateRaw.toLocaleDateString('ES')} ${dateRaw.toLocaleTimeString('ES')})`;
 
 function renderProducto(producto) {
   const linea = document.createElement('tr');
@@ -46,13 +48,10 @@ function addProduct(e) {
 }
 
 function render(data) {
-  // const moment = require ('moment');
-  // const hoy = moment (new Date());
-  // const hoyFormateado = hoy.format('DD/MM/yyyy');
   const html = data.map((elem, index) => {
       return(`<div>
-          <strong>${elem.author}</strong>:
-          <em>${elem.text}</em> </div>`)
+          <strong style="color: blue;">${elem.author}</strong> ${date}:
+          <em style="color: green;">${elem.text}</em> </div>`)
   }).join(" ");
   document.getElementById('messages').innerHTML = html;
 }
@@ -67,3 +66,15 @@ function addMessage(e) {
   socket.emit('new-message', mensaje);
   return false;
 }
+
+// let hora = new Date();
+
+// let date = hora.getFullYear() + '-' + hora.getMonth() + '-' + hora.getDay() + ' '  + hora.getHours() + ':' + hora.getMinutes() + ':' + hora.getSeconds();
+
+// console.log('1', date);
+
+// const dateRaw = new Date();
+
+// const date2 = `(${dateRaw.toLocaleDateString('ES')} ${dateRaw.toLocaleTimeString('ES')})`;
+
+// console.log(“2”, date2);

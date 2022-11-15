@@ -5,6 +5,7 @@ const app = express();
 const Contenedor = require('./contenedor/contenedorFs');
 
 
+
 const port = 8080;
 const publicRoot = './public';
 
@@ -44,6 +45,7 @@ io.on('connection', async (socket) => {
 
   socket.on('new-message',data => {
     messages.push(data);
+    
     io.sockets.emit('messages', messages);
   });
 });
