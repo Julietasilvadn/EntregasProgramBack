@@ -35,15 +35,15 @@ rutaProducto.get('/:id', async (peticion, respuesta) => {
     
 });
 
-//NO FUNCIONA
+//FUNCIONA
 rutaProducto.post('/', async (peticion, respuesta) => {
   const producto = peticion.body;
-  console.log(producto);
   await productos.save(producto);
+  console.log(producto);
   respuesta.json(producto);
 });
 
-//NO FUNCIONA
+//FUNCIONA
 rutaProducto.put('/:id',privilegio, async (peticion, respuesta) => {
   const id = parseInt(peticion.params.id);
   const producto = peticion.body;

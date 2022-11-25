@@ -30,6 +30,13 @@
     "id": 3
   },
   {
+    "nombre": "Pala",
+    "descripcion": "Pala",
+    "timestamp": 1668647566189,
+    "codigo": "1234567890",
+    "precio": 128,
+    "stock": 10,
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
     "id": 4
   }
 ]
