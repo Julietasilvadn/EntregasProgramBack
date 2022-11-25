@@ -2,44 +2,22 @@
   {
     "id": 1,
     "timestamp": 1668647566189,
-    "productos": [{
-    "nombre": "Escuadra",
-    "descripcion": "Escuadra",
-    "timestamp": 1668647566189,
-    "codigo": "1234567890",
-    "precio": 123.45,
-    "stock": 10,
-    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "id": 1
-},
-{
-    "nombre": "Escuadra DSDASD",
-    "descripcion": "Escuadra",
-    "timestamp": 1668647566189,
-    "codigo": "1234567890",
-    "precio": 123.45,
-    "stock": 10,
-    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-    "id": 2
-}]
-  },
-  {
-    "timestamp": 1669351449009,
     "productos": [
-      null,
-      null,
-      null
-    ],
+      {
+        "nombre": "Escuadra",
+        "descripcion": "Escuadra",
+        "timestamp": 1668647566189,
+        "codigo": "1234567890",
+        "precio": 123.45,
+        "stock": 10,
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "id": 1
+      }
+    ]
+  },
+  {
+    "timestamp": 1669386799557,
+    "productos": [],
     "id": 2
-  },
-  {
-    "timestamp": 1669351450861,
-    "productos": [],
-    "id": 3
-  },
-  {
-    "timestamp": 1669353316337,
-    "productos": [],
-    "id": 4
   }
 ]

@@ -94,7 +94,7 @@ export class Contenedor {
   const archivo = await fs.promises.readFile(this.archivo, 'utf-8');
   const archivoParseado = JSON.parse(archivo);
   let objetoSeleccionado = null;
-  archivoParseado.forEach(element => {
+  Array.from(archivoParseado).forEach(element => {
     if (element.id == id) {
       objetoSeleccionado = element;
     }

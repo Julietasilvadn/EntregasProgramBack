@@ -33,8 +33,8 @@ rutaCarrito.post('/', async (peticion, respuesta) => {
 
 //NO FUNCIONA Me da un error con el JSON.parse en el getById
 rutaCarrito.post('/:id/productos', async (peticion, respuesta) => {
-  const idCarrito = parseInt(peticion.params.id);
-  const idProducto = peticion.body.idProducto;
+  const idCarrito = parseInt(peticion.params.idProducto);
+  const idProducto = peticion.body.id;
   const producto = await productos.getById(idProducto);
   const carrito = await carritos.getById(idCarrito);
   carrito.productos.push(producto);

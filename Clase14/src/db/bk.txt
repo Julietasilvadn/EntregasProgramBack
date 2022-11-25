@@ -27,8 +27,8 @@ CARRITO
 PRODUCTOS
 [
   {
-    "nombre": "Escuadra X3",
-    "descripcion": "Escuadra X3",
+    "nombre": "Escuadra X1",
+    "descripcion": "Escuadra X1",
     "timestamp": 1668647566189,
     "codigo": "1234567890",
     "precio": 123.45,

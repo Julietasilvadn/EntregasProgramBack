@@ -15,7 +15,7 @@ const privilegio = (peticion, respuesta, next) => {
 };
 
 
-//todos dan error con json parse
+//todos dan error con json parse|
 //FUNCIONA
 rutaProducto.get('/', async (peticion, respuesta) => {
   const listaProductos = await productos.getAll();
