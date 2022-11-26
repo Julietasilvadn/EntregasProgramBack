@@ -17,7 +17,38 @@
   },
   {
     "timestamp": 1669386799557,
-    "productos": [],
+    "productos": [
+      {
+        "nombre": "Pala",
+        "descripcion": "Pala",
+        "timestamp": 1668647566189,
+        "codigo": "1234567890",
+        "precio": 128,
+        "stock": 10,
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "id": 4
+      },
+      {
+        "nombre": "Pala",
+        "descripcion": "Pala",
+        "timestamp": 1668647566189,
+        "codigo": "1234567890",
+        "precio": 128,
+        "stock": 10,
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "id": 4
+      },
+      {
+        "nombre": "Escuadra X1",
+        "descripcion": "Escuadra X1",
+        "timestamp": 1668647566189,
+        "codigo": "1234567890",
+        "precio": 123.45,
+        "stock": 10,
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "id": 1
+      }
+    ],
     "id": 2
   }
 ]

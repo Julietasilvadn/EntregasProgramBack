@@ -31,13 +31,12 @@ rutaCarrito.post('/', async (peticion, respuesta) => {
   respuesta.json(carrito);
 });
 
-//NO FUNCIONA Me da un error con el JSON.parse en el getById
+//FUNCIONA
 rutaCarrito.post('/:id/productos', async (peticion, respuesta) => {
   const idCarrito = parseInt(peticion.params.id);
   const idProducto = peticion.body.idProducto;
   const producto = await productos.getById(idProducto);
   const carrito = await carritos.getById(idCarrito);
-  console.log(producto)
   carrito.productos.push(producto);
   await carritos.update(idCarrito, carrito);
   respuesta.json({
@@ -55,25 +54,47 @@ rutaCarrito.delete('/:id', async (peticion, respuesta) => {
   });
 });
 
-//FUNCIONA a medias, si yo elimino el id_prod 1 dos veces teniendo dos productos con dif id los borra igual, solo toma el index
+//FUNCIONA
 rutaCarrito.delete('/:id/productos/:id_prod', async (peticion, respuesta) => {
   const idCarrito = parseInt(peticion.params.id);
   const idProducto = parseInt(peticion.params.id_prod);
   const carrito = await carritos.getById(idCarrito);
-  let indexToDelete = -1;
-  carrito.productos.forEach((producto, index) => {
-    if (producto.id == idProducto) {
-      indexToDelete = index;
+  const listaCarrito = carrito.productos 
+  let indexCarrito = -1
+
+  //OTRA FORMA CON FOR
+  // for(let i = 0; i < carrito.productos.length; i++){
+  //   let producto = carrito.productos[i];
+  //   if(producto.id !== idProducto){
+  //     lista.push(producto);
+      
+  //   }
+  // };
+  // carrito.productos = lista;
+  
+  // console.log(carrito);
+  // await carritos.update(idCarrito, carrito);
+  // respuesta.json({
+  //   status: 'ok'
+  // });
+  
+  listaCarrito.forEach((e, i)=>{
+    if(e.id === idProducto){
+      indexCarrito = i;
     }
   });
-  if (indexToDelete => 0) {
-    carrito.productos.splice(indexToDelete, 1);
+  if (indexCarrito == -1 ) {
+    respuesta.json({
+      status: 'Producto no encontrado'
+    });
+  } else {
+    listaCarrito.splice(indexCarrito, 1);
+    await carritos.update(idCarrito, carrito);
+    respuesta.json({
+      status: 'ok'
+    });
+  };
   }
-  await carritos.update(idCarrito, carrito);
-  respuesta.json({
-    status: 'ok'
-  });
-});
-
+);
 
 export { rutaCarrito };
