@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Pan",
+    "price": 120,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/bakery-kitchen-3/512/00_Bakery__Sweet.pdf-14-512.png",
+    "id": 1
+  },
+  {
+    "title": "Torta",
+    "price": 234,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/ie_yummy/128/cake_8.png",
+    "id": 2
+  },
+  {
+    "title": "Medialuna",
+    "price": 307,
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/bakery-152/504/croissant-pastry-bakery-french-bread-512.png",
+    "id": 3
+  },
+  {
+    "title": "Galleta",
+    "price": "356",
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/foods-49/128/cookie_tasty_biscuit_pastry-512.png",
+    "id": 4
+  },
+  {
+    "title": "Sanguche",
+    "price": "321",
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/foods-49/128/sandwich_bread_lettuce_ham-512.png",
+    "id": 5
+  },
+  {
+    "title": "Pizza",
+    "price": "267",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/fast-food-35/512/fast_food_menu_restaurant-01-512.png",
+    "id": 6
+  }
+]
