@@ -127,12 +127,6 @@ db.productos.updateMany({precio:{$gte:4000} }, { $set: { stock: 0 } });
 db.productos.deleteMany({ precio: {$lte:1000} });
 
 
-use admin;
-
-
-db.createUser({"user": "root", "pwd": "rootpwd", "roles": ["root"]});
-
-
 db.createUser(
   {
     user: "pepe",
