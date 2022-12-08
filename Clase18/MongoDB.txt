@@ -1,0 +1,142 @@
+use ecommerce;
+
+
+db.createCollection('productos');
+
+
+db.createCollection('mensajes');
+
+
+db.productos.insertMany([{
+  nombre: 'Samsung A71',
+  precio: 1600,
+  stock: 21
+},{
+  nombre: 'Iphone 13',
+  precio: 3000,
+  stock: 5
+},
+{
+  nombre: 'Xiaomi',
+  precio: 980,
+  stock: 32
+},
+{
+  nombre: 'Motorola',
+  precio: 4720,
+  stock: 5
+},
+{
+  nombre: 'LG',
+  precio: 1790,
+  stock: 19
+},
+{
+  nombre: 'Huawei',
+  precio: 3700,
+  stock: 2
+},{
+  nombre: 'BGH',
+  precio: 700,
+  stock: 7
+},{
+  nombre: 'Noblex',
+  precio: 2950,
+  stock: 41
+},{
+  nombre: 'BlackBerry',
+  precio: 5000,
+  stock: 1
+},{
+  nombre: 'Lenovo',
+  precio: 2489,
+  stock: 29
+}]);
+
+
+db.mensajes.insertMany([{
+  autor: 'Juan',
+  texto: 'Hola!'
+},{
+  autor: 'Thiago',
+  texto: '¿Cómo estas?'
+},{
+  autor: 'Daniela',
+  texto: 'Hey! Hola!'
+},{
+  autor: 'Romina',
+  texto: 'Buenas!!'
+},{
+  autor: 'Maximiliano',
+  texto: '¿Qué onda?'
+},{
+  autor: 'Diego',
+  texto: 'Holaa'
+},{
+  autor: 'Julieta',
+  texto: 'Hola Hola!!'
+},{
+  autor: 'Constanza',
+  texto: 'Uh buenas!'
+},{
+  autor: 'Rodrigo',
+  texto: 'Hi'
+},{
+  autor: 'Martina',
+  texto: 'Holu'
+}]);
+
+
+db.mensajes.find();
+
+
+db.productos.find();
+
+
+db.mensajes.countDocuments();
+
+
+db.productos.countDocuments();
+
+
+db.productos.insertOne({
+  nombre: 'Elite',
+  precio: 407,
+  stock: 6
+});
+
+
+db.productos.find({ precio: { $lte: 1000 } });
+
+
+db.productos.find({ $and: [ {precio: {$gte:1000}}, {precio: {$lte: 3000}} ]});
+
+
+db.productos.find({ precio: { $gte: 3000 } });
+
+
+db.productos.find().sort({ precio: 1 }).limit(1).skip(2);
+
+
+db.productos.updateMany({ }, { $set: { stock: 100 } });
+
+
+db.productos.updateMany({precio:{$gte:4000} }, { $set: { stock: 0 } });
+
+
+db.productos.deleteMany({ precio: {$lte:1000} });
+
+
+use admin;
+
+
+db.createUser({"user": "root", "pwd": "rootpwd", "roles": ["root"]});
+
+
+db.createUser(
+  {
+    user: "pepe",
+    pwd: "asd456",
+    roles: [{role: "read", db: "ecommerce"}]
+  });
+  
