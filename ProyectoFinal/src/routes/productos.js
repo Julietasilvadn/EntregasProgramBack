@@ -1,8 +1,9 @@
+//IMPORTACIONES
 import express from 'express';
-import { Contenedor } from '../contenedor/contenedorFs.js';
+import Contenedor from '../daos/productos/productosDaoFs.js';
 const rutaProducto = express.Router();
 
-const productos = new Contenedor('src/db/productos.txt');
+const productos = new Contenedor();
 
 //en los headers en postman agrego el administrador true
 const privilegio = (peticion, respuesta, next) => {
@@ -14,16 +15,14 @@ const privilegio = (peticion, respuesta, next) => {
   }
 };
 
+//ENDPOINTS
 
-
-//FUNCIONA
 rutaProducto.get('/', async (peticion, respuesta) => {
   const listaProductos = await productos.getAll();
   respuesta.json(listaProductos);
 });
 
-//FUNCIONA
-rutaProducto.get('/:id', async (peticion, respuesta) => {
+rutaProducto.get('/:id', async(peticion, respuesta) => {
   const id = parseInt(peticion.params.id);
   const producto = await productos.getById(id);
   if (producto) {
@@ -32,27 +31,23 @@ rutaProducto.get('/:id', async (peticion, respuesta) => {
     respuesta.status(404);
     respuesta.json({ error : 'producto no encontrado' });
   }
-    
 });
 
-//FUNCIONA
-rutaProducto.post('/', async (peticion, respuesta) => {
+rutaProducto.post('/', privilegio, async(peticion, respuesta) => {
   const producto = peticion.body;
   await productos.save(producto);
   console.log(producto);
   respuesta.json(producto);
 });
 
-//FUNCIONA
-rutaProducto.put('/:id',privilegio, async (peticion, respuesta) => {
-  const id = parseInt(peticion.params.id);
+rutaProducto.put('/:id', privilegio, async (peticion, respuesta) => {
+  const idProducto = parseInt(peticion.params.id);
   const producto = peticion.body;
-  await productos.update(id,producto)
+  await productos.update(idProducto, producto);
   respuesta.json(producto);
 });
 
-//FUNCIONA
-rutaProducto.delete('/:id',privilegio, async (peticion, respuesta) => {
+rutaProducto.delete('/:id', privilegio, async(peticion, respuesta) => {
   const id = parseInt(peticion.params.id);
   const productoBorrado = await productos.getById(id)
   const producto = await productos.deleteById(id);
