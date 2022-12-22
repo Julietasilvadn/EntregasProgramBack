@@ -6,7 +6,7 @@
   import { Server as HttpServer } from 'http';
   import { Server as Socket } from 'socket.io';
   import ContenedorMemoria from './contenedores/ContenedorMemoria.js';
-  import config from './config.js';
+  import { normalize, schema } from 'normalizr';
 
 //-----------------------------------------------------------------------------------------
 
@@ -22,23 +22,42 @@
   io.on('connection', async socket => {
       console.log('Nuevo cliente conectado!');
 
-      //CARGA PRODUCTOS
+      //PRODUCTOS
       socket.emit('productos', await productosApi.listarAll());
       socket.on('update', async producto => {
           await productosApi.guardar(producto)
           io.sockets.emit('productos', await productosApi.listarAll());
       });
 
-      // carga inicial de mensajes
+      //MENSAJES
       socket.emit('mensajes', await mensajesApi.listarAll());
-
-      // actualizacion de mensajes
       socket.on('nuevoMensaje', async mensaje => {
           mensaje.fyh = new Date().toLocaleString()
           await mensajesApi.guardar(mensaje)
           io.sockets.emit('mensajes', await mensajesApi.listarAll());
       });
   });
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+  //ESQUEMAS
+  const autorSchema = new schema.Entity('autor', {}, { idAttribute: 'email' });
+  const mensajeSchema = new schema.Entity('post', {
+      autor: autorSchema
+  }, { idAttribute: 'id' });
+  const mensajesSchema = new schema.Entity('posts', {
+      mensajes: [mensajeSchema]
+  }, { idAttribute: 'id' });
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+  const obtenerMensajesNormalizados = async () => {
+    const arregloMensajes = await mensajesApi.listarAll();
+    return normalize({
+        id: 'mensajes',
+        mensajes: arregloMensajes,
+    }, mensajesSchema);
+  };
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
