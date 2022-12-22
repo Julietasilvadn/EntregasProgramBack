@@ -46,12 +46,14 @@ const mensajesSchema = new normalizr.schema.Entity('posts', {
 
 const inputUsername = document.getElementById('inputUsername')
 const inputMensaje = document.getElementById('inputMensaje')
+
 const inputEmail = document.getElementById('inputEmail')
 const inputNombre = document.getElementById('inputNombre')
 const inputApellido = document.getElementById('inputApellido')
 const inputEdad = document.getElementById('inputEdad')
 const inputAlias = document.getElementById('inputAlias')
 const inputAvatar = document.getElementById('inputAvatar')
+
 const btnEnviar = document.getElementById('btnEnviar')
 
 const formPublicarMensaje = document.getElementById('formPublicarMensaje')
@@ -83,10 +85,14 @@ socket.on('mensajes', mensajes => {
     const tamanioDesnormalizado = JSON.stringify(mensajesDesnormalizados).length;
 
     const porcentaje = parseInt((tamanioNormalizado * 100)/tamanioDesnormalizado);
+
     document.getElementById("compresion").innerText = porcentaje || 0;
-    // console.log(porcentaje);
-    const html = makeHtmlList(mensajesDesnormalizados?.mensajes)
+
+    const html = makeHtmlList(mensajesDesnormalizados?.mensajes);
+
     document.getElementById('mensajes').innerHTML = html;
+    
+
 })
 
 function makeHtmlList(mensajes) {
@@ -101,8 +107,8 @@ function makeHtmlList(mensajes) {
     }).join(" ");
 }
 
-inputUsername.addEventListener('input', () => {
-    const hayEmail = inputUsername.value.length
+inputEmail.addEventListener('input', () => {
+    const hayEmail = inputEmail.value.length
     const hayTexto = inputMensaje.value.length
     inputMensaje.disabled = !hayEmail
     btnEnviar.disabled = !hayEmail || !hayTexto

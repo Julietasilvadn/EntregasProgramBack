@@ -34,7 +34,7 @@
 
                 <div class="form-group">
                     <label for="foto">Imagen: </label>
-                    <input id="foto" class="form-control" type="url" name="thumbnail">
+                    <input id="foto" class="form-control" type="url" name="thumbnail" required>
                 </div>
 
                 <button class="btn btn-success mt-3">Guardar</button>
@@ -56,6 +56,10 @@
             
             <hr>
 
+            <div id="mensajes"></div>
+            <br>
+            <br>
+
             <form id="formPublicarMensaje" class="form-inline" autocomplete="off">
                 <div class="form-group">
                     <input disabled id="inputMensaje" type="text" class="form-control my-2 mr-2"
@@ -64,10 +68,6 @@
                 </div>
             </form>
 
-            <br>
-            <br>
-
-            <div id="mensajes"></div>
         </div>
     </div>
 

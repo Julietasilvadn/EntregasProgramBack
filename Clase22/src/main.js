@@ -7,7 +7,6 @@
   import { Server as Socket } from 'socket.io';
   import ContenedorMemoria from './contenedores/ContenedorMemoria.js';
   import { normalize, schema } from 'normalizr';
-
 //-----------------------------------------------------------------------------------------
 
 
@@ -41,6 +40,7 @@
 
 //-----------------------------------------------------------------------------------------
   //ESQUEMAS
+  
   const autorSchema = new schema.Entity('autor', {}, { idAttribute: 'email' });
   const mensajeSchema = new schema.Entity('post', {
       autor: autorSchema
@@ -48,6 +48,7 @@
   const mensajesSchema = new schema.Entity('posts', {
       mensajes: [mensajeSchema]
   }, { idAttribute: 'id' });
+  
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
@@ -58,6 +59,7 @@
         mensajes: arregloMensajes,
     }, mensajesSchema);
   };
+  
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
