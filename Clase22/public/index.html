@@ -44,15 +44,15 @@
         </div>
 
         <div class="jumbotron">
-            <h1>Centro de Mensajes</h1>
+            <h1>Mensajes</h1>
             <br>
 
-            <input type="text" id="inputEmail" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu email">
-            <input type="text" id="inputNombre" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu nombre">
-            <input type="text" id="inputApellido" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu apellido">
-            <input type="text" id="inputEdad" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu edad">
-            <input type="text" id="inputAlias" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu alias">
-            <input type="text" id="inputAvatar" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu avatar">
+            <input type="email" id="inputEmail" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu email" required>
+            <input type="text" id="inputNombre" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu nombre" required>
+            <input type="text" id="inputApellido" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu apellido" required>
+            <input type="number" id="inputEdad" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu edad" required>
+            <input type="text" id="inputAlias" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu alias" required>
+            <input type="url" id="inputAvatar" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu avatar">
             
             <hr>
 
@@ -62,9 +62,9 @@
 
             <form id="formPublicarMensaje" class="form-inline" autocomplete="off">
                 <div class="form-group">
-                    <input disabled id="inputMensaje" type="text" class="form-control my-2 mr-2"
+                    <input id="inputMensaje" type="text" class="form-control my-2 mr-2"
                         placeholder="Ingresá un mensaje...">
-                    <button disabled id="btnEnviar" type="submit" class="btn btn-primary my-2">Enviar!</button>
+                    <button id="btnEnviar" type="submit" class="btn btn-primary my-2">Enviar</button>
                 </div>
             </form>
 

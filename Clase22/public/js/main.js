@@ -1,5 +1,4 @@
 const socket = io.connect();
-
 //---------------------------------------------------------------------------------------------------
 
 const formAgregarProducto = document.getElementById('formAgregarProducto')
@@ -73,7 +72,7 @@ formPublicarMensaje.addEventListener('submit', e => {
     }
     socket.emit('nuevoMensaje', mensaje);
     formPublicarMensaje.reset()
-    inputMensaje.focus()
+    /* inputMensaje.focus() */
 })
 
 socket.on('mensajes', mensajes => {
@@ -88,10 +87,9 @@ socket.on('mensajes', mensajes => {
 
     document.getElementById("compresion").innerText = porcentaje || 0;
 
-    const html = makeHtmlList(mensajesDesnormalizados?.mensajes);
+    const html = makeHtmlList(mensajesDesnormalizados.mensajes);
 
     document.getElementById('mensajes').innerHTML = html;
-    
 
 })
 
@@ -107,7 +105,7 @@ function makeHtmlList(mensajes) {
     }).join(" ");
 }
 
-inputEmail.addEventListener('input', () => {
+/* inputEmail.addEventListener('input', () => {
     const hayEmail = inputEmail.value.length
     const hayTexto = inputMensaje.value.length
     inputMensaje.disabled = !hayEmail
@@ -117,4 +115,4 @@ inputEmail.addEventListener('input', () => {
 inputMensaje.addEventListener('input', () => {
     const hayTexto = inputMensaje.value.length
     btnEnviar.disabled = !hayTexto
-})
+}) */
